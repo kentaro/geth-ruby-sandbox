@@ -1,0 +1,3 @@
+[submodule "vendor/truffle-init-default"]
+	path = vendor/truffle-init-default
+	url = git@github.com:trufflesuite/truffle-init-default.git
