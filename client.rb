@@ -45,6 +45,20 @@ when :transfer then
     contract_index: 1, # これがないと先にデプロイされたConvertLibがかえってくるぽい？
   )
   pp contract.transact_and_wait.send_coin(to_address, amount.to_i) # 明示的にto_iしないとだめだよ
+when :get_balance then
+  base = client.eth_accounts["result"].first
+  client.personal_unlock_account(base, password)
+
+  address, contract_address = ARGV[1..2]
+
+  contract = Ethereum::Contract.create(
+    name:    "MetaCoin",
+    client:  client,
+    file:    "vendor/truffle-init-default/contracts/MetaCoin.sol",
+    address: contract_address,
+    contract_index: 1, # これがないと先にデプロイされたConvertLibがかえってくるぽい？
+  )
+  pp contract.call.get_balance(address) # チェーンを書き換えない参照だけのメソッドは`call`で呼ぶ
 else
   puts "command not found"
   exit(1)
