@@ -2,6 +2,7 @@
 
 require 'ethereum'
 require 'pp'
+require 'pry'
 
 command  = ARGV.first
 client   = Ethereum::HttpClient.new('http://localhost:8545', true)
@@ -37,11 +38,13 @@ when :transfer then
   to_address, amount, contract_address = ARGV[1..3]
 
   contract = Ethereum::Contract.create(
+    name:    "MetaCoin",
     client:  client,
     file:    "vendor/truffle-init-default/contracts/MetaCoin.sol",
     address: contract_address,
+    contract_index: 1, # これがないと先にデプロイされたConvertLibがかえってくるぽい？
   )
-  pp contract.transact_and_wait.send_coin(to_address, amount)
+  pp contract.transact_and_wait.send_coin(to_address, amount.to_i) # 明示的にto_iしないとだめだよ
 else
   puts "command not found"
   exit(1)

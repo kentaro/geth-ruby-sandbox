@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:EthWorks/ethereum.rb.git
+  revision: b655c15c8214c0160400ab8f9c0da401e38a4810
+  specs:
+    ethereum.rb (2.1.7)
+      activesupport (~> 5.0)
+      digest-sha3 (~> 1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -6,12 +14,10 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    byebug (9.1.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     digest-sha3 (1.1.0)
-    ethereum.rb (2.1.7)
-      activesupport (~> 5.0)
-      digest-sha3 (~> 1.1)
     i18n (0.9.0)
       concurrent-ruby (~> 1.0)
     method_source (0.9.0)
@@ -19,16 +25,19 @@ GEM
     pry (0.11.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-byebug (3.5.0)
+      byebug (~> 9.1)
+      pry (~> 0.10)
     thread_safe (0.3.6)
-    tzinfo (1.2.3)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  ethereum.rb
-  pry
+  ethereum.rb!
+  pry-byebug
 
 BUNDLED WITH
    1.14.6
